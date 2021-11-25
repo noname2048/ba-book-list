@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/github.io/ba-book-list/static/css/main.a7ea48d5.chunk.css",
+    "main.js": "/github.io/ba-book-list/static/js/main.bb8f58c2.chunk.js",
+    "main.js.map": "/github.io/ba-book-list/static/js/main.bb8f58c2.chunk.js.map",
+    "runtime-main.js": "/github.io/ba-book-list/static/js/runtime-main.651b8e93.js",
+    "runtime-main.js.map": "/github.io/ba-book-list/static/js/runtime-main.651b8e93.js.map",
+    "static/js/2.e58e21e1.chunk.js": "/github.io/ba-book-list/static/js/2.e58e21e1.chunk.js",
+    "static/js/2.e58e21e1.chunk.js.map": "/github.io/ba-book-list/static/js/2.e58e21e1.chunk.js.map",
+    "static/js/3.0c6080da.chunk.js": "/github.io/ba-book-list/static/js/3.0c6080da.chunk.js",
+    "static/js/3.0c6080da.chunk.js.map": "/github.io/ba-book-list/static/js/3.0c6080da.chunk.js.map",
+    "index.html": "/github.io/ba-book-list/index.html",
+    "static/css/main.a7ea48d5.chunk.css.map": "/github.io/ba-book-list/static/css/main.a7ea48d5.chunk.css.map",
+    "static/js/2.e58e21e1.chunk.js.LICENSE.txt": "/github.io/ba-book-list/static/js/2.e58e21e1.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/github.io/ba-book-list/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.651b8e93.js",
+    "static/js/2.e58e21e1.chunk.js",
+    "static/css/main.a7ea48d5.chunk.css",
+    "static/js/main.bb8f58c2.chunk.js"
+  ]
+}
