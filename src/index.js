@@ -2,17 +2,21 @@ import "./index.css";
 
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import CoinApp from "./components/CoinApp";
 import Home from "./pages/Home";
+import MovieApp from "./components/MovieApp";
 import React from "react";
 import ReactDOM from "react-dom";
+import TodoApp from "./components/TodoApp";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      {/* <App /> */}
-      <Home />
-    </BrowserRouter>
+    {/* <App /> */}
+    {/* <CoinApp /> */}
+    <MovieApp />
+    <TodoApp />
+    {/* <Home /> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
