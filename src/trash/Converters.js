@@ -38,7 +38,7 @@ export function MinToHour(props) {
   );
 }
 
-export function KmToMiles() {
+export function KmToMiles(props) {
   const [amount, setAmount] = useState(0);
   const [minOrHour, setMinOrHour] = useState(true);
 
