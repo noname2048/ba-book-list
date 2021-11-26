@@ -7,8 +7,16 @@ export default function MovieApp() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MovieHome />} />
-        <Route path="/movie" element={<MovieDetail />} />
+        <Route
+          basename={process.env.PUBLIC_URL}
+          path="/"
+          element={<MovieHome />}
+        />
+        <Route
+          basename={process.env.PUBLIC_URL}
+          path="/movie/:id"
+          element={<MovieDetail />}
+        />
       </Routes>
     </BrowserRouter>
   );
