@@ -9,7 +9,9 @@ export default function IsbnSearch() {
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`localhost:8000/search?isbn=${isbn13}`);
+      const response = await fetch(
+        `http://localhost:8000/search?isbn=${isbn13}`
+      );
       console.log(response);
       const json = response.json();
       setBooks(json.data.books);
