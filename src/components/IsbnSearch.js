@@ -1,10 +1,43 @@
+import { useState } from "react";
+
 export default function IsbnSearch() {
-    return (
-        <div>
-            <form action="">
-                <label htmlFor="isbn13">ISBN13 으로 서지 검색하기</label>
-                <input type="text" name={'isbn13'}/>
-            </form>
-        </div>
-    );
+  const [books, setBooks] = useState(null);
+  const [isbn13, setIsbn13] = useState([]);
+  const onChange = (event) => {
+    setIsbn13(event.target.value);
+  };
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch(`localhost:8000/search?isbn=${isbn13}`);
+      console.log(response);
+      const json = response.json();
+      setBooks(json.data.books);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <div>
+      <form action="" onSubmit={onSubmit}>
+        <label htmlFor="isbn13_search">
+          <strong>isbn</strong> (13자리) 를 입력하세요
+        </label>
+        <input
+          type="text"
+          id="isbn13_search"
+          name="isbn13"
+          value={isbn13}
+          onChange={onChange}
+        />
+        <button type="submit">검색하기</button>
+        <ul>
+          {books
+            ? books.map((book, idx) => <li key={idx}>book.title</li>)
+            : null}
+        </ul>
+      </form>
+    </div>
+  );
 }

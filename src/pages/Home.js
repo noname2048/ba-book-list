@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 
 import IsbnSearch from "../components/IsbnSearch";
-import { Main } from "../components/Converters";
+// import { Main } from "../components/Converters";
 import React from "react";
+import RecentUpdateBook from "../components/RecentUpdateBook";
 
 class Home extends React.Component {
   render() {
@@ -10,9 +11,8 @@ class Home extends React.Component {
       <div>
         <h1>WELCOME HOME</h1>
         <Routes>
-          <Route path="#" element={<IsbnSearch />} />
+          <Route path="/" element={<IsbnSearch />} />
         </Routes>
-        <Main />
       </div>
     );
   }
