@@ -13,7 +13,8 @@ export default function IsbnSearch() {
         `http://localhost:8000/search?isbn=${isbn13}`
       );
       console.log(response);
-      const json = response.json();
+      const json = await response.json();
+      console.log(json);
       setBooks(json.data.books);
     } catch (error) {
       console.log(error);
