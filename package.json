@@ -43,5 +43,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://noname2048/github.io/ba-book-list"
+  "resolutions": {
+    "styled-compnents": "^5"
+  }
 }
