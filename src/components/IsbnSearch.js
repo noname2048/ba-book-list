@@ -15,7 +15,7 @@ export default function IsbnSearch() {
       console.log(response);
       const json = await response.json();
       console.log(json);
-      setBooks(json.data.books);
+      setBooks(json.data);
     } catch (error) {
       console.log(error);
     }

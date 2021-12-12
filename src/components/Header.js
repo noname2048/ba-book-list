@@ -1,7 +1,8 @@
 // import { useState } from "react";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { GoSearch } from "react-icons/go";
+
 const StyledDiv = styled.div`
   display: flex;
 `;
