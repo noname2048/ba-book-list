@@ -2,7 +2,7 @@ import "./App.css";
 
 // import mvp from "../public/css/mvp.module.css";
 // import "../public/css/mvp.css";
-import "./mvp.css";
+// import "./mvp.css";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Routes, Route } from "react-router-dom";
