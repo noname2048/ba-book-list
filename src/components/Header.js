@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { StyledHeaderSearch } from "./HeaderSearch";
 
 const TitleH1 = styled.h1`
+  word-break: keep-all;
   margin: 1.2rem;
 `;
 
@@ -13,6 +14,7 @@ const MainDiv = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background: #303030;
 `;
 
 const SearchInputDiv = styled.div`
@@ -36,6 +38,7 @@ const LoginStatusDiv = styled.div`
 `;
 
 const StyledLink = styled(Link)`
+  word-break: keep-all;
   padding: 0.5rem;
   margin: 0.5rem;
 `;

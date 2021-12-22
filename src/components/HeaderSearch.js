@@ -1,9 +1,25 @@
-import { executeReducerBuilderCallback } from "@reduxjs/toolkit/dist/mapBuilders";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
+
 const HeaderSearch = () => {
   const [searchText, setSearchText] = useState("");
-  let value = "";
+  const [value, setValue] = useState("");
+
+  useEffect(() => {
+    async function fetchData() {
+      if (value === "") return;
+      try {
+        const response = await fetch(
+          `http://localhost:8000/api/v1/request?value=${value}`
+        );
+        const data = await response.json();
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchData();
+  }, [value]);
 
   const isbnRegx = /[0-9-]/gi;
 
@@ -18,7 +34,7 @@ const HeaderSearch = () => {
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            value = e.target.value;
+            setValue(e.target.value);
             console.log(`search ${value}`);
             setSearchText("");
           } else if (!e.key.match(isbnRegx)) {
@@ -26,11 +42,10 @@ const HeaderSearch = () => {
           }
         }}
       />
-      {searchText.split().map((t, idx) => (
-        <span
-          key={idx}
-          style={{ color: t.match(isbnRegx) ? "black" : "red" }}
-        ></span>
+      {[...searchText].map((c, idx) => (
+        <span key={idx} style={{ color: c.match(isbnRegx) ? "black" : "red" }}>
+          {c}
+        </span>
       ))}
     </div>
   );
