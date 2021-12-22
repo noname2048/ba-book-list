@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { GoSearch } from "react-icons/go";
 import styled from "styled-components";
+import { StyledHeaderSearch } from "./HeaderSearch";
 
 const TitleH1 = styled.h1`
   margin: 1.2rem;
@@ -18,12 +19,13 @@ const SearchInputDiv = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: #181818;
+  background-color: #888;
   border-radius: 1.2rem;
+  padding: 0.3rem;
 `;
 
 const StyledInput = styled.input`
-  display: block;
+  display: flex;
 `;
 
 const LoginStatusDiv = styled.div`
@@ -43,11 +45,10 @@ const Header = () => {
     <MainDiv>
       <TitleH1>서지검색</TitleH1>
       <SearchInputDiv>
-        <GoSearch />
-        <span style={{ width: "100px", display: "block" }}>
-          <StyledInput type="text" />
-        </span>
-        <span>검색하기</span>
+        <GoSearch style={{ margin: "0.3rem" }} />
+        <StyledInput type="text" placeholder="검색하기" />
+        <StyledHeaderSearch />
+        <span style={{ margin: "0.2rem" }}>ISBN</span>
       </SearchInputDiv>
       <LoginStatusDiv>
         <StyledLink to="/login">로그인</StyledLink>
