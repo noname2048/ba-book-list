@@ -22,10 +22,11 @@ export default function BookSearchResult() {
   }, [isbn13]);
 
   return (
-    <div>
+    <>{isbn13 ? <div>
       {result.map(() => (
         <p>{result}</p>
       ))}
-    </div>
+    </div> : <p>isbn13연결바람</p>}</>
+    
   );
 }

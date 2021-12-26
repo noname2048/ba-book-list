@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { GoSearch } from "react-icons/go";
 import styled from "styled-components";
 import { StyledHeaderSearch } from "./HeaderSearch";
+import IsbnSearch from "./IsbnSearch";
 
 const TitleH1 = styled.h1`
   word-break: keep-all;
@@ -43,7 +44,7 @@ const StyledLink = styled(Link)`
   margin: 0.5rem;
 `;
 
-const Header = () => {
+export default function Header() {
   return (
     <MainDiv>
       <TitleH1>서지검색</TitleH1>
@@ -59,6 +60,6 @@ const Header = () => {
       </LoginStatusDiv>
     </MainDiv>
   );
-};
+}
 
 export { Header };
