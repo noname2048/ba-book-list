@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 export default function BookSearchResult() {
   const { isbn13 } = useParams();
-  const { result, setResult } = useState("");
+  const [result, setResult] = useState("");
 
   const fetchData = async (isbn) => {
     try {
@@ -22,11 +22,16 @@ export default function BookSearchResult() {
   }, [isbn13]);
 
   return (
-    <>{isbn13 ? <div>
-      {result.map(() => (
-        <p>{result}</p>
-      ))}
-    </div> : <p>isbn13연결바람</p>}</>
-    
+    <>
+      {isbn13 ? (
+        <div>
+          {result.map(() => (
+            <p>{result}</p>
+          ))}
+        </div>
+      ) : (
+        <p>isbn13연결바람</p>
+      )}
+    </>
   );
 }
