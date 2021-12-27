@@ -1,57 +1,61 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+const TITLE = "title";
 
 const HeaderSearch = () => {
+  const [searchOption, setSearchOption] = useState(TITLE);
+  const [typeValidationResult, setTypeValidationResult] = useState(true);
   const [searchText, setSearchText] = useState("");
-  const [value, setValue] = useState("");
-
-  useEffect(() => {
-    async function fetchData() {
-      if (value === "") return;
-      try {
-        const response = await fetch(
-          `http://localhost:8000/api/v1/request?value=${value}`
-        );
-        const data = await response.json();
-        console.log(data);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    fetchData();
-  }, [value]);
-
-  const isbnRegx = /[0-9-]/gi;
+  const navigate = useNavigate();
+  const isbnRegx = /[0-9-]*/gi;
 
   return (
-    <div>
-      <select name="search_option" id="search-option">
-        <option value="title">제목</option>
+    <>
+      <select
+        name="search_option"
+        id="search-option"
+        onChange={(event) => {
+          setSearchOption(event.target.value);
+        }}
+      >
+        <option value={TITLE} defaultValue>
+          제목
+        </option>
         <option value="isbn13">ISBN13</option>
       </select>
-      <input
-        type="text"
-        placeholder="ISBN 검색하기"
-        value={searchText}
-        onChange={(e) => {
-          setSearchText(e.target.value);
-        }}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            setValue(e.target.value);
-            console.log(`search ${value}`);
-            setSearchText("");
-          } else if (!e.key.match(isbnRegx)) {
-            console.log("wrong input");
-          }
-        }}
-      />
-      {[...searchText].map((c, idx) => (
-        <span key={idx} style={{ color: c.match(isbnRegx) ? "black" : "red" }}>
-          {c}
+      <div style={{ position: "relative" }}>
+        <input
+          type="text"
+          placeholder={`${searchOption} 으로 검색하기`}
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+            console.log(searchText, isbnRegx.test(searchText));
+            setTypeValidationResult(isbnRegx.test(searchText));
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              navigate(`/books/search?${searchOption}=${searchText}`);
+              setSearchText("");
+            }
+          }}
+        />
+        <span
+          hidden={typeValidationResult && searchOption === "title"}
+          style={{
+            color: "red",
+            position: "absolute",
+            left: "0px",
+            top: "20px",
+            fontSize: "0.3rem",
+            alignContent: "center",
+          }}
+        >
+          isbn13 형식이 맞지 않습니다.
         </span>
-      ))}
-    </div>
+      </div>
+    </>
   );
 };
 
