@@ -50,7 +50,6 @@ export default function Header() {
       <TitleH1>서지검색</TitleH1>
       <SearchInputDiv>
         <GoSearch style={{ margin: "0.3rem" }} />
-        <StyledInput type="text" placeholder="검색하기" />
         <StyledHeaderSearch />
         <span style={{ margin: "0.2rem" }}>ISBN</span>
       </SearchInputDiv>

@@ -25,6 +25,10 @@ const HeaderSearch = () => {
 
   return (
     <div>
+      <select name="search_option" id="search-option">
+        <option value="title">제목</option>
+        <option value="isbn13">ISBN13</option>
+      </select>
       <input
         type="text"
         placeholder="ISBN 검색하기"
