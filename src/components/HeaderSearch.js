@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 const TITLE = "title";
@@ -8,7 +8,8 @@ const HeaderSearch = () => {
   const [typeValidationResult, setTypeValidationResult] = useState(true);
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
-  const isbnRegx = /[0-9-]*/gi;
+  const roughRegx = /^[\d-]*$/gm;
+  const isbnRegx = /^(\d([\d-])*)?\d$/gm;
 
   return (
     <>
@@ -31,18 +32,33 @@ const HeaderSearch = () => {
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
-            console.log(searchText, isbnRegx.test(searchText));
-            setTypeValidationResult(isbnRegx.test(searchText));
+            let localResult = roughRegx.test(e.target.value);
+            setTypeValidationResult(localResult);
+            // console.log(localResult);
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              navigate(`/books/search?${searchOption}=${searchText}`);
-              setSearchText("");
+              if (searchOption === "title") {
+                navigate(`/books/search?${searchOption}=${searchText}`);
+              } else {
+                let localResult = isbnRegx.test(searchText);
+                let cond2 = searchText.match(/\d/g);
+                if (localResult && cond2.length === 13) {
+                  navigate(`/books/search?${searchOption}=${searchText}`);
+                } else {
+                  console.log(localResult, cond2);
+                  console.log("isbn 형식에 맞지 않습니다.");
+                }
+              }
             }
           }}
         />
         <span
-          hidden={typeValidationResult && searchOption === "title"}
+          hidden={
+            searchOption === "title" ||
+            searchText === "" ||
+            typeValidationResult
+          }
           style={{
             color: "red",
             position: "absolute",
