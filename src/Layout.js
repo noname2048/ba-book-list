@@ -10,7 +10,7 @@ export default function Layout() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" />
-        <Route path="/search/books" element={<BookSearchResult />} />
+        <Route path="/books/search" element={<BookSearchResult />} />
       </Routes>
     </>
   );
